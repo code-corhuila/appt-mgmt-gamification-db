@@ -1,0 +1,6 @@
+aws_region                       = "us-east-1"
+environment                      = "dev"
+vpc_id                           = "vpc-REPLACE"
+private_subnet_ids               = ["subnet-private-a", "subnet-private-b"]
+application_security_group_ids   = ["sg-REPLACE"]
+engine_version                   = "16.4"

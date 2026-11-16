@@ -1,0 +1,25 @@
+name: Database quality
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - qa
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Test schema and seed
+        run: npm test
+      - uses: hashicorp/setup-terraform@v3
+      - name: Check Terraform formatting
+        run: terraform fmt -check -recursive terraform
